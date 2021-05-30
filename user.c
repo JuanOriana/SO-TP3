@@ -1,8 +1,7 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com/
-
-#include <netdb.h>
-#include <netinet/in.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,36 +9,32 @@
 
 int main(int argc, char *argv[])
 {
-    int socketFd, portno, n;
-    struct sockdah_in serv_addr;
-    struct hostent *server;
+    int socketFd;
+    struct sockaddr_in serv_addr;
 
     char buffer[256];
 
-    if (argc < 3)
+    if (argc != 3)
     {
-        fprintf(stderr, "usage %s hostname port\n", argv[0]);
+        fprintf(stderr, "usage %s address port\n", argv[0]);
         exit(0);
     }
 
-    portno = atoi(argv[2]);
-
     if ((socketFd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {
-        perror("ERROR socket");
+        perror("socket");
         exit(1);
     }
 
-    if ((server = gethostbyname(argv[1])) == NULL)
+    // Convert IPv4 and IPv6 addresses from text to binary form
+    if (inet_pton(AF_INET, argv[1], &serv_addr.sin_addr) <= 0)
     {
-        perror("gethostbyname");
-        exit(1);
+        printf("inet_pton: invalid address");
+        return -1;
     }
 
-    memset((char *)&serv_addr, 0, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
-    memcpy((char *)server->h_addr_list[0], (char *)&serv_addr.sin_addr.s_addr, server->h_length);
-    serv_addr.sin_port = htons(portno);
+    serv_addr.sin_port = htons(atoi(argv[2]));
 
     if (connect(socketFd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
     {
@@ -52,9 +47,9 @@ int main(int argc, char *argv[])
     while (fgets(buffer, 255, stdin) != NULL)
     {
         /* Send message to the server */
-        n = write(socketFd, buffer, strlen(buffer));
+        int len = write(socketFd, buffer, strlen(buffer));
 
-        if (n < 0)
+        if (len < 0)
         {
             perror("write");
             exit(1);
