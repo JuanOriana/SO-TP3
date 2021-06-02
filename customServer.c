@@ -14,7 +14,9 @@
 #define ADDRESS "0.0.0.0"
 
 static Level levelArray[] = {
-    {level1, "entendido\n"}
+    {level1, "entendido\n"},
+    {level2, "itba\n"},
+    {level3, "M4GFKZ289aku\n"}
 
 };
 
@@ -81,7 +83,7 @@ static void beginCTF(int clientFd)
         memset(response, 0, CAP);
 
         printf("------------- DESAFIO -------------\n");
-        if ((retVal = currLevel.levelFun(clientFile, &response, currLevel.ans)) == 1)
+        if ((retVal = currLevel.levelFun(clientFile, response, currLevel.ans)) == 1)
         {
             level++;
         }

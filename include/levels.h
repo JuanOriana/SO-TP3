@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-typedef int (*LevelFun)(FILE *clientFile, char **buff, char *ans);
+typedef int (*LevelFun)(FILE *clientFile, char *buff, char *ans);
 
 typedef struct Level
 {
@@ -12,8 +12,10 @@ typedef struct Level
 } Level;
 
 #define CAP 100
-#define LEVEL_COUNT 1
+#define LEVEL_COUNT 3
 
-int level1(FILE *clientFile, char **buff, char *ans);
+int level1(FILE *clientFile, char *buff, char *ans);
+int level2(FILE *clientFile, char *buff, char *ans);
+int level3(FILE *clientFile, char *buff, char *ans);
 
 #endif
