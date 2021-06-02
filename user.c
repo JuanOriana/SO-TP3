@@ -42,7 +42,6 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    printf("Ingrese la respuesta: ");
     memset(buffer, 0, 256);
     while (fgets(buffer, 255, stdin) != NULL)
     {
@@ -56,8 +55,6 @@ int main(int argc, char *argv[])
         }
 
         memset(buffer, 0, 256);
-
-        printf("Ingrese la respuesta: ");
     }
     return 0;
 }

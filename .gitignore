@@ -10,5 +10,8 @@
 
 *.o
 user
+customServer
+a.out
+quine
 
 .bash_history
