@@ -1,5 +1,6 @@
 #include "include/levels.h"
 #include <string.h>
+#include <unistd.h>
 
 static int inputAnalyzer(FILE *clientFile, char *buff, char *ans)
 {
@@ -36,6 +37,18 @@ int level2(FILE *clientFile, char *buff, char *ans)
 int level3(FILE *clientFile, char *buff, char *ans)
 {
     printf("https://ibb.co/tc0Hb6w\n\n");
+
+    return inputAnalyzer(clientFile, buff, ans);
+}
+
+int level4(FILE *clientFile, char *buff, char *ans)
+{
+    if (write(420, "................................La respuesta es fk3wfLCm3QvS\n", 61) == -1)
+    {
+        perror("write");
+    }
+
+    printf("EBADF...\n\n");
 
     return inputAnalyzer(clientFile, buff, ans);
 }

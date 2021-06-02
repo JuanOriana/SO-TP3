@@ -12,10 +12,11 @@ typedef struct Level
 } Level;
 
 #define CAP 100
-#define LEVEL_COUNT 3
+#define LEVEL_COUNT 4
 
 int level1(FILE *clientFile, char *buff, char *ans);
 int level2(FILE *clientFile, char *buff, char *ans);
 int level3(FILE *clientFile, char *buff, char *ans);
+int level4(FILE *clientFile, char *buff, char *ans);
 
 #endif

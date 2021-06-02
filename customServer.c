@@ -13,20 +13,13 @@
 #define PORT 8080
 #define ADDRESS "0.0.0.0"
 
-char *easterEgg = 
-" _______________________\n
-< ESTO ES UN EASTER_EGG >\n
------------------------\n
-\\   ^__^\n
-\\  (oo)\\_______\n
-    (__)\\       )\\/\\\n
-            ||----w |\n
-            ||     ||";
+char *easterEgg = " _______________________\n< ESTO ES UN EASTER_EGG >\n -----------------------\n        \\   ^__^\n         \\  (oo)\\_______\n            (__)\\       )\\/\\\n                ||----w |\n                ||     ||";
 
 static Level levelArray[] = {
     {level1, "entendido\n"},
     {level2, "itba\n"},
-    {level3, "M4GFKZ289aku\n"}
+    {level3, "M4GFKZ289aku\n"},
+    {level4, "fk3wfLCm3QvS\n"},
 
 };
 
