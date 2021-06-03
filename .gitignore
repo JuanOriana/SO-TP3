@@ -13,5 +13,6 @@ user
 customServer
 a.out
 quine
+.RUN_ME
 
 .bash_history

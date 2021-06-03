@@ -9,6 +9,7 @@
 #include <arpa/inet.h>
 #include <string.h>
 #include "include/levels.h"
+#include <sys/types.h>
 
 #define PORT 8080
 #define ADDRESS "0.0.0.0"
@@ -20,6 +21,8 @@ static Level levelArray[] = {
     {level2, "itba\n"},
     {level3, "M4GFKZ289aku\n"},
     {level4, "fk3wfLCm3QvS\n"},
+    {level5, "too_easy\n"},
+    {level6, ".RUN_ME"}
 
 };
 
@@ -39,7 +42,7 @@ int main()
         exit(EXIT_FAILURE);
     }
 
-    if (setsockopt(serverFd, SOL_SOCKET, SO_REUSEPORT, &opt, sizeof(opt)) != 0)
+    if (setsockopt(serverFd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) != 0)
     {
         perror("setsockopt");
         exit(EXIT_FAILURE);

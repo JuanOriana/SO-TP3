@@ -2,6 +2,10 @@
 #include <string.h>
 #include <unistd.h>
 
+#define ANSWER_TO_LIFE_THE_UNIVERSE_AND_EVERYTHING 42
+
+int too_easy = ANSWER_TO_LIFE_THE_UNIVERSE_AND_EVERYTHING;
+
 static int inputAnalyzer(FILE *clientFile, char *buff, char *ans)
 {
     if (fgets(buff, CAP, clientFile) == NULL)
@@ -49,6 +53,21 @@ int level4(FILE *clientFile, char *buff, char *ans)
     }
 
     printf("EBADF...\n\n");
+
+    return inputAnalyzer(clientFile, buff, ans);
+}
+
+int level5(FILE *clientFile, char *buff, char *ans)
+{
+
+    printf("respuesta = strings:129\n\n");
+
+    return inputAnalyzer(clientFile, buff, ans);
+}
+
+int level6(FILE *clientFile, char *buff, char *ans)
+{
+    printf(".debug_abbrev .debug_line .debug_str ? .symtab .strtab. .shstrtab\n\n");
 
     return inputAnalyzer(clientFile, buff, ans);
 }
