@@ -10,6 +10,8 @@
 #include <string.h>
 #include "include/levels.h"
 #include <sys/types.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define PORT 8080
 #define ADDRESS "0.0.0.0"
@@ -22,7 +24,11 @@ static Level levelArray[] = {
     {level3, "M4GFKZ289aku\n"},
     {level4, "fk3wfLCm3QvS\n"},
     {level5, "too_easy\n"},
-    {level6, ".RUN_ME"}
+    {level6, ".RUN_ME\n"},
+    {level7, "K5n2UFfpFMUN\n"},
+    {level8, "BUmyYq5XxXGt\n"},
+    {level9, "u^v\n"},
+    {level10, "chin_chu_lan_cha\n"}
 
 };
 
@@ -81,6 +87,8 @@ static void beginCTF(int clientFd)
     int retVal = 0, level = 0;
     FILE *clientFile = fdopen(clientFd, "r");
     char *response = malloc(sizeof(char) * CAP);
+
+    srand(time(0));
 
     while (level < LEVEL_COUNT && retVal != -1)
     {
