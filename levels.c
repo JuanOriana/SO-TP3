@@ -3,11 +3,16 @@
 #include <math.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <math.h>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 #define ANSWER_TO_LIFE_THE_UNIVERSE_AND_EVERYTHING 42
 #define RAND_OFFSET 6
 #define FIRST_PRINTABLE 32
 #define LAST_PRINTABLE 126
+#define NORMAL_AMOUNT 1000
 
 int too_easy = ANSWER_TO_LIFE_THE_UNIVERSE_AND_EVERYTHING;
 
@@ -17,6 +22,24 @@ static void gdbme()
     {
         printf("La respuesta es: gdb_rules\n\n");
     }
+}
+
+// https://rosettacode.org/wiki/Random_numbers#C
+
+static double drand() /* uniform distribution, (0..1] */
+{
+    return (rand() + 1.0) / (RAND_MAX + 1.0);
+}
+
+static double randomNormal() /* normal distribution, centered on 0, std dev 1 */
+{
+    return sqrt(-2 * log(drand())) * cos(2 * M_PI * drand());
+}
+
+static void printNormals(int n)
+{
+    for (int i = 0; i < n; i++)
+        printf("%.6f ", randomNormal());
 }
 
 static int inputAnalyzer(FILE *clientFile, char *buff, char *ans)
@@ -164,6 +187,14 @@ int level11(FILE *clientFile, char *buff, char *ans)
     printf("b gdbme y encontrá el valor mágico ENTER para reintentar.\n\n");
 
     gdbme();
+
+    return inputAnalyzer(clientFile, buff, ans);
+}
+
+int level12(FILE *clientFile, char *buff, char *ans)
+{
+    printf("Me conoces\n\n");
+    printNormals(NORMAL_AMOUNT);
 
     return inputAnalyzer(clientFile, buff, ans);
 }
