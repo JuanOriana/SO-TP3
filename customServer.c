@@ -28,7 +28,8 @@ static Level levelArray[] = {
     {level7, "K5n2UFfpFMUN\n"},
     {level8, "BUmyYq5XxXGt\n"},
     {level9, "u^v\n"},
-    {level10, "chin_chu_lan_cha\n"}
+    {level10, "chin_chu_lan_cha\n"},
+    {level11, "gdb_rules\n"}
 
 };
 

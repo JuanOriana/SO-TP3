@@ -11,6 +11,14 @@
 
 int too_easy = ANSWER_TO_LIFE_THE_UNIVERSE_AND_EVERYTHING;
 
+static void gdbme()
+{
+    if (getpid() == 0x12345678)
+    {
+        printf("La respuesta es: gdb_rules\n\n");
+    }
+}
+
 static int inputAnalyzer(FILE *clientFile, char *buff, char *ans)
 {
     if (fgets(buff, CAP, clientFile) == NULL)
@@ -147,6 +155,15 @@ int level10(FILE *clientFile, char *buff, char *ans)
     }
     else
         printf("\n\n ENTER para reintentar.\n\n");
+
+    return inputAnalyzer(clientFile, buff, ans);
+}
+
+int level11(FILE *clientFile, char *buff, char *ans)
+{
+    printf("b gdbme y encontrá el valor mágico ENTER para reintentar.\n\n");
+
+    gdbme();
 
     return inputAnalyzer(clientFile, buff, ans);
 }
