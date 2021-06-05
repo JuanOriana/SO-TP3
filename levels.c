@@ -129,7 +129,7 @@ int filterChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
     strcat(completeAns, ans);
 
     int i = 0;
-    while (completeAns[i])
+    while (completeAns[i] != 0)
     {
         int fd = rand() % (RAND_OFFSET - STDOUT_FILENO + 1) + STDOUT_FILENO;
 

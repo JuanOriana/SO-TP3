@@ -7,12 +7,14 @@
 #include <string.h>
 #include <unistd.h>
 
+#define BUFF_LEN 256
+
 int main(int argc, char *argv[])
 {
     int socketFd;
     struct sockaddr_in serv_addr;
 
-    char buffer[256];
+    char buffer[BUFF_LEN];
 
     if (argc != 3)
     {
@@ -42,11 +44,11 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    memset(buffer, 0, 256);
-    while (fgets(buffer, 255, stdin) != NULL)
+    memset(buffer, 0, BUFF_LEN);
+    while (fgets(buffer, BUFF_LEN - 1, stdin) != NULL)
     {
         /* Send message to the server */
-        int len = write(socketFd, buffer, strlen(buffer));
+        int len = write(socketFd, buffer, BUFF_LEN);
 
         if (len < 0)
         {
@@ -54,7 +56,7 @@ int main(int argc, char *argv[])
             exit(1);
         }
 
-        memset(buffer, 0, 256);
+        memset(buffer, 0, BUFF_LEN);
     }
     return 0;
 }

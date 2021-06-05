@@ -82,6 +82,8 @@ int main()
     beginCTF(clientFd);
 
     close(serverFd);
+
+    return 0;
 }
 
 static void beginCTF(int clientFd)
@@ -96,7 +98,13 @@ static void beginCTF(int clientFd)
     {
         Level currLevel = levelArray[level];
         printf("\033[1;1H\033[2J");
+
         memset(response, 0, CAP);
+        if (memset == NULL)
+        {
+            retVal = -1;
+            break;
+        }
 
         printf("------------- DESAFIO -------------\n");
         if ((retVal = currLevel.levelFun(clientFile, response, currLevel.invQuest, currLevel.ans)) == 1)
