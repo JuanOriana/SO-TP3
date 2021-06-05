@@ -42,6 +42,12 @@ static void printNormals(int n)
         printf("%.6f ", randomNormal());
 }
 
+static void investigationQuestion(char *question)
+{
+    static char *header = "----- PREGUNTA PARA INVESTIGAR -----";
+    printf("\n%s\n%s\n\n", header, question);
+}
+
 static int inputAnalyzer(FILE *clientFile, char *buff, char *ans)
 {
     if (fgets(buff, CAP, clientFile) == NULL)
@@ -50,38 +56,41 @@ static int inputAnalyzer(FILE *clientFile, char *buff, char *ans)
     return strcmp(buff, ans) == 0;
 }
 
-int level1(FILE *clientFile, char *buff, char *ans)
+int introductionChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
     printf(
         "Bienvenidos al TP3 y felicitaciones, ya resolvieron el primer acertijo.\n\n"
-        "En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafíos de cada nivel."
-        "Además tendrán que investigar otras preguntas para responder durante la defensa."
+        "En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafíos de cada nivel.\n"
+        "Además tendrán que investigar otras preguntas para responder durante la defensa.\n"
         "El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los mismos desafíos"
-        " y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta."
+        " y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta.\n"
         "Además, deberán implementar otro programa para comunicarse conmigo.\n\n"
         "Deberán estar atentos a los easter eggs.\n\n"
-        "Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\\n'\n\n");
+        "Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\\n'\n");
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }
 
-int level2(FILE *clientFile, char *buff, char *ans)
+int pagerChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
     printf(
         "The Wire S1E5\n"
         "5295 888 6288\n\n");
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }
 
-int level3(FILE *clientFile, char *buff, char *ans)
+int photoChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
     printf("https://ibb.co/tc0Hb6w\n\n");
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }
 
-int level4(FILE *clientFile, char *buff, char *ans)
+int ebadfChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
     if (write(420, "................................La respuesta es fk3wfLCm3QvS\n", 61) == -1)
     {
@@ -90,30 +99,33 @@ int level4(FILE *clientFile, char *buff, char *ans)
 
     printf("EBADF...\n\n");
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }
 
-int level5(FILE *clientFile, char *buff, char *ans)
+int stringsChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
 
-    printf("respuesta = strings:129\n\n");
+    printf("respuesta = strings:208\n\n");
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }
 
-int level6(FILE *clientFile, char *buff, char *ans)
+int sectionChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
     printf(".debug_abbrev .debug_line .debug_str ? .symtab .strtab. .shstrtab\n\n");
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }
 
-int level7(FILE *clientFile, char *buff, char *ans)
+int filterChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
 
     printf("Filter error\n");
 
-    char completeAns[64] = "La respuesta es :";
+    char completeAns[64] = "La respuesta es: ";
     strcat(completeAns, ans);
 
     int i = 0;
@@ -132,18 +144,20 @@ int level7(FILE *clientFile, char *buff, char *ans)
         }
     }
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }
 
-int level8(FILE *clientFile, char *buff, char *ans)
+int incognitoChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
     printf("¿?\n\n");
     printf("\033[30;40mLa respuesta es BUmyYq5XxXGt\033[0m\n\n");
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }
 
-int level9(FILE *clientFile, char *buff, char *ans)
+int latexChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
     printf(
         "Latexme\n\n"
@@ -152,10 +166,11 @@ int level9(FILE *clientFile, char *buff, char *ans)
         "entonces\n"
         "y =\n\n");
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }
 
-int level10(FILE *clientFile, char *buff, char *ans)
+int quineChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
 
     int existsQuine, isValidQuine;
@@ -179,22 +194,25 @@ int level10(FILE *clientFile, char *buff, char *ans)
     else
         printf("\n\n ENTER para reintentar.\n\n");
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }
 
-int level11(FILE *clientFile, char *buff, char *ans)
+int gdbChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
     printf("b gdbme y encontrá el valor mágico ENTER para reintentar.\n\n");
 
     gdbme();
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }
 
-int level12(FILE *clientFile, char *buff, char *ans)
+int randomChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
     printf("Me conoces\n\n");
     printNormals(NORMAL_AMOUNT);
 
+    investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
 }

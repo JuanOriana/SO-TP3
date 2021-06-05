@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "types.h": "c",
-        "levels.h": "c"
+        "levels.h": "c",
+        "stdlib.h": "c"
     }
 }
