@@ -16,6 +16,7 @@ all: $(OBJECTS_LEVELS) client
 	$(CC) $(GCCFLAGS) $(SOURCES_SERVER) $(OBJECTS_LEVELS) -I./include -o $(EXECUTABLE_SERVER) $(GCCLIBS)
 	touch .RUN_ME
 	objcopy --add-section .RUN_ME=.RUN_ME  customServer
+	rm .RUN_ME
 
 %.o: %.c
 	$(CC) $(GCCFLAGS) -I./include -c $^ $(GCCLIBS)
