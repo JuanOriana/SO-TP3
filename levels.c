@@ -92,12 +92,13 @@ int photoChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 
 int ebadfChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
+
+    printf("EBADF...\n\n");
+
     if (write(420, "................................La respuesta es fk3wfLCm3QvS\n", 61) == -1)
     {
         perror("write");
     }
-
-    printf("EBADF...\n\n");
 
     investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
