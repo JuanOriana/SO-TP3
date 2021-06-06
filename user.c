@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     while (fgets(buffer, BUFF_LEN - 1, stdin) != NULL)
     {
         /* Send message to the server */
-        int len = write(socketFd, buffer, BUFF_LEN);
+        int len = write(socketFd, buffer, strlen(buffer));
 
         if (len < 0)
         {
