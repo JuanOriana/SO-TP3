@@ -95,7 +95,7 @@ int ebadfChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 
     printf("EBADF...\n\n");
 
-    if (write(420, "................................La respuesta es fk3wfLCm3QvS\n", 62) `== -1)
+    if (write(420, "................................La respuesta es fk3wfLCm3QvS\n", 62) == -1)
     {
         perror("write");
     }
