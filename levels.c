@@ -109,7 +109,7 @@ int ebadfChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 int stringsChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
 
-    printf("respuesta = strings:207\n\n");
+    printf("respuesta = strings:245\n\n");
 
     investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
@@ -117,7 +117,7 @@ int stringsChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 
 int sectionChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
-    printf(".debug_abbrev .debug_line .debug_str ? .symtab .strtab. .shstrtab\n\n");
+    printf(".data .bss .comment ? .shstrtab .symtab .strtab\n\n");
 
     investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
