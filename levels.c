@@ -136,7 +136,7 @@ int filterChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
     {
         int fd = rand() % (RAND_OFFSET - STDOUT_FILENO + 1) + STDOUT_FILENO;
 
-        if (fd == STDOUT_FILENO && completeAns[i])
+        if (fd == STDOUT_FILENO)
         {
             write(STDOUT_FILENO, completeAns + i++, 1);
         }
@@ -176,13 +176,14 @@ int latexChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 int quineChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
 
-    int existsQuine, isValidQuine;
+    int existsQuine;
     printf("quine.\n\n");
 
     existsQuine = system("gcc quine.c -o quine");
 
     if (existsQuine == 0)
     {
+        int isValidQuine;
         printf("¡Genial!, ya lograron meter un programa en quine.c, veamos si hace lo que corresponde.\n");
         isValidQuine = system("./quine | diff - quine.c");
         if (isValidQuine == 0)

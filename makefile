@@ -1,6 +1,6 @@
 
 CC= gcc
-GCCFLAGS= -std=gnu99  -Wall -pedantic -fsanitize=address
+GCCFLAGS= -std=gnu99  -Wall -pedantic 
 GCCLIBS= -lm
 
 SOURCES_SERVER= customServer.c
@@ -30,7 +30,7 @@ clean:
 cleanTest:
 	rm -rf output.cppOut report.tasks results.valgrind
 
-test: clean 
+test: cleanTest
 	./pvs.sh; valgrind --leak-check=full -v ./customServer 2>> results.valgrind; valgrind --leak-check=full -v ./user 2>> results.valgrind; cppcheck --quiet --enable=all --force --inconclusive customServer.c levels.c user.c 2>> output.cppOut
 
-.PHONY: all clean cleanTest test user
+.PHONY: all clean cleanTest test

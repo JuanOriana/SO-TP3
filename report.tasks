@@ -1,8 +1,1 @@
 www.viva64.com/en/w	1	err	Help: The documentation for all analyzer warnings is available here: https://www.viva64.com/en/w/.
-/root/customServer.c	1	err	V009 To use free version of PVS-Studio, source code files are required to start with a special comment.
-/root/levels.c	1	err	V009 To use free version of PVS-Studio, source code files are required to start with a special comment.
-/root/user.c	1	err	V009 To use free version of PVS-Studio, source code files are required to start with a special comment.
-/root/customServer.c	84	note	V591 The 'main' function does not return a value, which is equivalent to 'return 0'. It is possible that this is an unintended behavior. 
-/root/customServer.c	98	warn	V575 The potential null pointer is passed into 'memset' function. Inspect the first argument. Check lines: 98, 90.
-/root/levels.c	126	warn	V560 A part of conditional expression is always true: completeAns[i].
-/root/user.c	49	err	V1010 Unchecked tainted data is used in the third argument: 'strlen(buffer)'. Check lines: 49, 49.

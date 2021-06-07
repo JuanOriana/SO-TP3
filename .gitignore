@@ -25,3 +25,9 @@ quine
 # tests
 /report.tasks
 /index.html
+/output.cppOut
+/results.valgrind
+
+#MAC usrs
+.DS_Store
+Desktop.ini
