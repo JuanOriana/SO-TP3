@@ -73,6 +73,9 @@ int main()
     }
 
     clientFd = accept(serverFd, (struct sockaddr *)&address, (socklen_t *)&addrLen);
+
+    close(serverFd);
+
     if (clientFd < 0)
     {
         perror("accept");
@@ -81,7 +84,7 @@ int main()
 
     beginCTF(clientFd);
 
-    close(serverFd);
+    close(clientFd);
 
     return 0;
 }
@@ -93,6 +96,7 @@ static void beginCTF(int clientFd)
     char *response = malloc(sizeof(char) * CAP);
     if (response == NULL)
     {
+        fclose(clientFile);
         return;
     }
 
