@@ -19,13 +19,13 @@ int main(int argc, char *argv[])
     if (argc != 3)
     {
         fprintf(stderr, "usage %s address port\n", argv[0]);
-        exit(0);
+        exit(EXIT_FAILURE);
     }
 
     if ((socketFd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {
         perror("socket");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     // Convert IPv4 and IPv6 addresses from text to binary form
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     if (connect(socketFd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
     {
         perror("connect");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     memset(buffer, 0, BUFF_LEN);
@@ -53,11 +53,13 @@ int main(int argc, char *argv[])
         if (len < 0)
         {
             perror("write");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
 
         memset(buffer, 0, BUFF_LEN);
     }
+
     close(socketFd);
+
     return 0;
 }
