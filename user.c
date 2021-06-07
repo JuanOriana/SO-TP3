@@ -58,5 +58,6 @@ int main(int argc, char *argv[])
 
         memset(buffer, 0, BUFF_LEN);
     }
+    close(socketFd);
     return 0;
 }

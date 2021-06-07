@@ -118,6 +118,7 @@ static void beginCTF(int clientFd)
     }
 
     free(response);
+    fclose(clientFile);
 
     if (retVal == -1)
     {
