@@ -27,6 +27,7 @@ quine
 /index.html
 /output.cppOut
 /results.valgrind
+report.tasks
 
 #MAC usrs
 .DS_Store
