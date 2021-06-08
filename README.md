@@ -17,6 +17,8 @@ Si bien no es obligatorio, puede usar el programa user para comunicarse con el s
 ```bash
 ./user <ADD> <PORT>
 ```
+## Server
+El binario *server* es el original pasado por la catedra, lo dejamos para usar como referencia
 
 ## Licencia
 [MIT](https://choosealicense.com/licenses/mit/)
