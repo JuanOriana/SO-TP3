@@ -31,6 +31,7 @@ cleanTest:
 	rm -rf output.cppOut report.tasks results.valgrind
 
 test: cleanTest
-	./pvs.sh; valgrind --leak-check=full -v ./customServer 2>> results.valgrind; valgrind --leak-check=full -v ./user 2>> results.valgrind; cppcheck --quiet --enable=all --force --inconclusive customServer.c levels.c user.c 2>> output.cppOut
+	./pvs.sh;
+	cppcheck --quiet --enable=all --force --inconclusive customServer.c levels.c user.c 2>> output.cppOut;
 
 .PHONY: all clean cleanTest test client user customServer server
