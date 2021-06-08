@@ -28,6 +28,7 @@ quine
 /output.cppOut
 /results.valgrind
 report.tasks
+.config\PVS-Studio
 
 #MAC usrs
 .DS_Store
