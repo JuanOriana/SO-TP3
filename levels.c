@@ -109,7 +109,7 @@ int ebadfChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 int stringsChallenge(FILE *clientFile, char *buff, char *invQuest, char *ans)
 {
 
-    printf("respuesta = strings:245\n\n");
+    printf("respuesta = strings:212\n\n");
 
     investigationQuestion(invQuest);
     return inputAnalyzer(clientFile, buff, ans);
